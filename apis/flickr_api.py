@@ -84,6 +84,3 @@ def split_up(s):
         else:
             return_string += (split[i] + '+')
     return return_string
-
-r = search_by_tag_return_display_urls('cats')
-print(r)
