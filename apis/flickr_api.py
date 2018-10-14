@@ -1,6 +1,5 @@
 import requests
-import flask
-import flickr_photo
+from classes import flickr_photo
 
 URL_GET_RECENT = "https://api.flickr.com/services/rest/?method=flickr.photos.getRecent" \
             "&api_key=41014e55b2a616bc84ba31aa9c8966cb&per_page=10&format=json&nojsoncallback=1"

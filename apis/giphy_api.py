@@ -1,9 +1,10 @@
-import time
-import giphy_client
-from giphy_client.rest import ApiException
 from pprint import pprint
+
+import giphy_client
 import requests
-import giphy
+from giphy_client.rest import ApiException
+
+from classes import giphy
 
 # create an instance of the API class
 api_instance = giphy_client.DefaultApi()
