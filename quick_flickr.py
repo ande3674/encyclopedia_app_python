@@ -64,19 +64,18 @@ def search():
 def upload():
     p = request.form['data']
     p = ast.literal_eval(p)
-    print(p)
-
+    #print(p)
     if p.get('type') == 'flickr':
-        db.insert_flickr(p.get('photo').get('owner'), p.get('photo').get('server'), p.get('photo').get('ispublic'),
+        db.insert_flickr('name', p.get('photo').get('owner'), p.get('photo').get('server'), p.get('photo').get('ispublic'),
                          p.get('photo').get('isfriend'), p.get('photo').get('farm'), p.get('photo').get('id'),
                          p.get('photo').get('secret'), p.get('photo').get('title'), p.get('photo').get('isfamily'))
     elif p.get('type') == 'giphy':
         print(p.get('link'))
-        db.insert_giphy(p.get('photo').get('type'), p.get('photo').get('id'), p.get('photo').get('slug'),
+        db.insert_giphy('name', p.get('photo').get('type'), p.get('photo').get('id'), p.get('photo').get('slug'),
                          p.get('photo').get('url'))
     elif p.get('type') == 'unsplash':
         print(p.get('link'))
-        db.insert_unsplash(p.get('photo').get('id'), p.get('photo').get('width'), p.get('photo').get('height'),
+        db.insert_unsplash('name', p.get('photo').get('id'), p.get('photo').get('width'), p.get('photo').get('height'),
                          p.get('photo').get('description'), p.get('photo').get('url'))
 
     return render_template('upload.html', url=p.get('link'))
