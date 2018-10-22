@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
 from apis import flickr_api, giphy_api, unsplash_api
+from database import db
+import json, ast
 
 app = Flask(__name__)
-db = 'jdbc:sqlite:C:/Users/ce691/PycharmProjects/quick_flickr\library.sqlite'
+db_url = 'jdbc:sqlite:C:/Users/ce691/PycharmProjects/quick_flickr\library.sqlite'
 
 @app.route('/')
 def hello_world():
@@ -61,8 +63,23 @@ def search():
 @app.route('/upload', methods=['POST'])
 def upload():
     p = request.form['data']
+    p = ast.literal_eval(p)
     print(p)
-    return p
+
+    if p.get('type') == 'flickr':
+        db.insert_flickr(p.get('photo').get('owner'), p.get('photo').get('server'), p.get('photo').get('ispublic'),
+                         p.get('photo').get('isfriend'), p.get('photo').get('farm'), p.get('photo').get('id'),
+                         p.get('photo').get('secret'), p.get('photo').get('title'), p.get('photo').get('isfamily'))
+    elif p.get('type') == 'giphy':
+        print(p.get('link'))
+        db.insert_giphy(p.get('photo').get('type'), p.get('photo').get('id'), p.get('photo').get('slug'),
+                         p.get('photo').get('url'))
+    elif p.get('type') == 'unsplash':
+        print(p.get('link'))
+        db.insert_unsplash(p.get('photo').get('id'), p.get('photo').get('width'), p.get('photo').get('height'),
+                         p.get('photo').get('description'), p.get('photo').get('url'))
+
+    return render_template('upload.html', url=p.get('link'))
 
 if __name__ == '__main__':
     app.run()
