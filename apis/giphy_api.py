@@ -42,6 +42,11 @@ def build_urls(giphys):
     return link_list
 
 
+def build_one_url(id):
+    url = DISPLAY_TEMPLATE.format(ID=id)
+    return url
+
+
 def split_up(s):
     split = s.split(" ")
     return_string = ''

@@ -55,6 +55,9 @@ def build_urls(photos):
     return url_list
 
 
+def build_one_url(farm, server, id, secret):
+    url = photoUrlTemplate.format(NUM=farm, S1=server, S2=id, S3=secret)
+    return url
 
 def search_by_tag_return_display_urls(tag):
     tag = split_up(tag)

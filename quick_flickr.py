@@ -84,7 +84,39 @@ def upload():
 @app.route('/pull')
 def pull():
     search_term = request.args.get('keyword')
-    return search_term
+    # query each table
+    flickr_photo_data = db.query_flickr(search_term)
+    giphy_photo_data = db.query_giphy(search_term)
+    unsplash_photo_data = db.query_unsplah(search_term)
+    # Test data - delete later
+    print(flickr_photo_data)
+    print(giphy_photo_data)
+    print(unsplash_photo_data)
+    #now we have to deal with all of the data
+    # build/get url links
+    all_photo_urls = [] # List of ALL photo urls that match the search term (from all tables)
+    # FLICKR PHOTOS
+    for i in range(len(flickr_photo_data)):
+        farm = flickr_photo_data[i][5]
+        server = flickr_photo_data[i][2]
+        id = flickr_photo_data[i][6]
+        secret = flickr_photo_data[i][7]
+        url = flickr_api.build_one_url(farm, server, id, secret)
+        print(url)
+        all_photo_urls.append(url)
+    # GIPHY PHOTOS
+    for i in range (len(giphy_photo_data)):
+        id = giphy_photo_data[i][2]
+        url = giphy_api.build_one_url(id)
+        print(url)
+        all_photo_urls.append(url)
+    # UNSPLASH PHOTOS
+    for i in range(len(unsplash_photo_data)):
+        url = unsplash_photo_data[i][5]
+        print(url)
+        all_photo_urls.append(url)
+    # send urls to the webpage to render
+    return render_template('pull.html', links=all_photo_urls)
 
 
 if __name__ == '__main__':
