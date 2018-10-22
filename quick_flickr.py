@@ -81,5 +81,11 @@ def upload():
 
     return render_template('upload.html', url=photo_data.get('link'))
 
+@app.route('/pull')
+def pull():
+    search_term = request.args.get('keyword')
+    return search_term
+
+
 if __name__ == '__main__':
     app.run()

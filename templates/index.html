@@ -4,10 +4,24 @@
 
     <h1>Welcome to Quick Flickr</h1>
 
+    <!--Search new photos-->
     <h2>Enter a search term:</h2>
     <form action="/search" method="GET">
 
         Search: <input type="text" name="search"><br>
+
+        <input type="submit" value="Go">
+    </form>
+
+
+        <!--Search saved photos-->
+    <div class="container">
+        <p class="flow-text OutlineTextBlack green-text text-accent-3"><b>Recently Saved Photo Search</b></p>
+    </div>
+
+    <form action="/pull" method="GET">
+
+        Keyword to Search: <input type="text" name="keyword"><br>
 
         <input type="submit" value="Go">
     </form>
@@ -85,11 +99,5 @@
                 </div>
             </div>
         </div-->
-
-
-    <!--Saved photos-->
-    <div class="container">
-        <p class="flow-text OutlineTextBlack green-text text-accent-3"><b>Recently Saved Photos</b></p>
-    </div>
 
 {% endblock %}

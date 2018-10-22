@@ -47,10 +47,44 @@ def insert_unsplash(name, id, width, height, description, url):
     conn.commit()
     conn.close()
 
-def query(search_term):
-    sql_statement1 = SQL_QUERY_FLICKR + "'" + search_term + "'"
-    sql_statement2 = SQL_QUERY_GIPHY + "'" + search_term + "'"
-    sql_statement3 = SQL_QUERY_UNSPLASH + "'" + search_term + "'"
+def query_flickr(search_term):
+    sql_statement = SQL_QUERY_FLICKR + "'%" + search_term + "%'"
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    try:
+        c.execute(sql_statement)
+    except sqlite3.DatabaseError:
+        print('Error querying table.')
+    all_rows = c.fetchall()
+    conn.commit()
+    conn.close()
+    return all_rows
 
-# s = SQL_INSERT_FLICKR.format(owner='150516435@n03', server='1931', ispublic=1, isfriend=0, farm=2, id='30545493287', secret='c65a0e8188', title='Megan & Buddy', isfamily=0)
-# print(s)
+def query_giphy(search_term):
+    sql_statement = SQL_QUERY_GIPHY + "'%" + search_term + "%'"
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    try:
+        c.execute(sql_statement)
+    except sqlite3.DatabaseError:
+        print('Error querying table.')
+    all_rows = c.fetchall()
+    conn.commit()
+    conn.close()
+    return all_rows
+
+def query_unsplah(search_term):
+    sql_statement = SQL_QUERY_UNSPLASH + "'%" + search_term + "%'"
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    try:
+        c.execute(sql_statement)
+    except sqlite3.DatabaseError:
+        print('Error querying table.')
+    all_rows = c.fetchall()
+    conn.commit()
+    conn.close()
+    return all_rows
+
+rows = query_giphy('snow')
+print(rows)
