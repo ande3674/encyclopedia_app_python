@@ -10,3 +10,4 @@ class Flickr:
         self.secret = secret
         self.title = title
         self.isfamily = isfamily
+

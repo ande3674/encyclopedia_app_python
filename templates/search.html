@@ -3,30 +3,30 @@
 {% block content %}
 
 <h1>Flickr Results</h1><br>
-    {% for link in links1 %}
+    {% for data in flickr %}
         <form method="POST" action="/upload">
-        <img src="{{ link }}">
-        <input type="text" name="data" value="{{ link }}">
-        <button type="submit" value="{{ link }}">Save</button>
+        <img src="{{ data.link }}">
+        <input type="hidden" name="data" value="{{ data }}">
+        <button type="submit">Save</button>
         </form>
-
     {% endfor %}
 
 <h1>Giphy Results</h1><br>
-    {% for link in links2 %}
+
+    {% for data in giphy %}
         <form method="POST" action="/upload">
-        <img src="{{ link }}">
-        <input type="hidden" name="data">
-        <button type="submit" class="button">Save</button>
+        <img src="{{ data.link }}">
+        <input type="hidden" name="data" value="{{ data }}">
+        <button type="submit">Save</button>
         </form>
     {% endfor %}
 
 <h1>Unsplash Results</h1><br>
-    {% for link in links3 %}
+    {% for data in unsplash %}
         <form method="POST" action="/upload">
-        <img src="{{ link }}">
-        <input type="hidden" name="data">
-        <button type="submit" class="button">Save</button>
+        <img src="{{ data.link }}">
+        <input type="hidden" name="data" value="{{ data }}">
+        <button type="submit">Save</button>
         </form>
     {% endfor %}
 
