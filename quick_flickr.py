@@ -89,9 +89,9 @@ def pull():
     giphy_photo_data = db.query_giphy(search_term)
     unsplash_photo_data = db.query_unsplah(search_term)
     # Test data - delete later
-    print(flickr_photo_data)
-    print(giphy_photo_data)
-    print(unsplash_photo_data)
+    #print(flickr_photo_data)
+    #print(giphy_photo_data)
+    #print(unsplash_photo_data)
     #now we have to deal with all of the data
     # build/get url links
     all_photo_urls = [] # List of ALL photo urls that match the search term (from all tables)
@@ -102,21 +102,21 @@ def pull():
         id = flickr_photo_data[i][6]
         secret = flickr_photo_data[i][7]
         url = flickr_api.build_one_url(farm, server, id, secret)
-        print(url)
+        #print(url)
         all_photo_urls.append(url)
     # GIPHY PHOTOS
     for i in range (len(giphy_photo_data)):
         id = giphy_photo_data[i][2]
         url = giphy_api.build_one_url(id)
-        print(url)
+        #print(url)
         all_photo_urls.append(url)
     # UNSPLASH PHOTOS
     for i in range(len(unsplash_photo_data)):
         url = unsplash_photo_data[i][5]
-        print(url)
+        #print(url)
         all_photo_urls.append(url)
     # send urls to the webpage to render
-    return render_template('pull.html', links=all_photo_urls)
+    return render_template('pull.html', term=search_term, links=all_photo_urls)
 
 
 if __name__ == '__main__':

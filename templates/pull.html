@@ -1,11 +1,13 @@
 {%  extends "base.html" %}
 
 {% block content %}
-
+<a name="top"></a>
+    <h1>Here are all your photos matching "{{ term }}":</h1>
 {% for link in links %}
 
     <img src="{{ link }}">
 
 {% endfor %}
-
+    <br>
+<a href="#top">Back To Top</a>
 {% endblock %}
