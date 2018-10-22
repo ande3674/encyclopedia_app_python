@@ -6,7 +6,8 @@
     {% for data in flickr %}
         <form method="POST" action="/upload">
         <img src="{{ data.link }}">
-        <input type="hidden" name="data" value="{{ data }}">
+        <input type="hidden" name="data" value="{{ data }}"><br>
+        Name for this photo?: <input type="text" name="name">
         <button type="submit">Save</button>
         </form>
     {% endfor %}
@@ -16,7 +17,8 @@
     {% for data in giphy %}
         <form method="POST" action="/upload">
         <img src="{{ data.link }}">
-        <input type="hidden" name="data" value="{{ data }}">
+        <input type="hidden" name="data" value="{{ data }}"><br>
+        Name for this photo?: <input type="text" name="name">
         <button type="submit">Save</button>
         </form>
     {% endfor %}
@@ -25,7 +27,8 @@
     {% for data in unsplash %}
         <form method="POST" action="/upload">
         <img src="{{ data.link }}">
-        <input type="hidden" name="data" value="{{ data }}">
+        <input type="hidden" name="data" value="{{ data }}"><br>
+        Name for this photo?: <input type="text" name="name">
         <button type="submit">Save</button>
         </form>
     {% endfor %}

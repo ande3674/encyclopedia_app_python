@@ -62,23 +62,24 @@ def search():
 
 @app.route('/upload', methods=['POST'])
 def upload():
-    p = request.form['data']
-    p = ast.literal_eval(p)
-    #print(p)
-    if p.get('type') == 'flickr':
-        db.insert_flickr('name', p.get('photo').get('owner'), p.get('photo').get('server'), p.get('photo').get('ispublic'),
-                         p.get('photo').get('isfriend'), p.get('photo').get('farm'), p.get('photo').get('id'),
-                         p.get('photo').get('secret'), p.get('photo').get('title'), p.get('photo').get('isfamily'))
-    elif p.get('type') == 'giphy':
-        print(p.get('link'))
-        db.insert_giphy('name', p.get('photo').get('type'), p.get('photo').get('id'), p.get('photo').get('slug'),
-                         p.get('photo').get('url'))
-    elif p.get('type') == 'unsplash':
-        print(p.get('link'))
-        db.insert_unsplash('name', p.get('photo').get('id'), p.get('photo').get('width'), p.get('photo').get('height'),
-                         p.get('photo').get('description'), p.get('photo').get('url'))
+    photo_name = request.form['name']
+    photo_data = request.form['data']
+    photo_data = ast.literal_eval(photo_data)
+    print(photo_name)
+    if photo_data.get('type') == 'flickr':
+        db.insert_flickr(photo_name, photo_data.get('photo').get('owner'), photo_data.get('photo').get('server'), photo_data.get('photo').get('ispublic'),
+                         photo_data.get('photo').get('isfriend'), photo_data.get('photo').get('farm'), photo_data.get('photo').get('id'),
+                         photo_data.get('photo').get('secret'), photo_data.get('photo').get('title'), photo_data.get('photo').get('isfamily'))
+    elif photo_data.get('type') == 'giphy':
+        print(photo_data.get('link'))
+        db.insert_giphy(photo_name, photo_data.get('photo').get('type'), photo_data.get('photo').get('id'), photo_data.get('photo').get('slug'),
+                         photo_data.get('photo').get('url'))
+    elif photo_data.get('type') == 'unsplash':
+        print(photo_data.get('link'))
+        db.insert_unsplash(photo_name, photo_data.get('photo').get('id'), photo_data.get('photo').get('width'), photo_data.get('photo').get('height'),
+                         photo_data.get('photo').get('description'), photo_data.get('photo').get('url'))
 
-    return render_template('upload.html', url=p.get('link'))
+    return render_template('upload.html', url=photo_data.get('link'))
 
 if __name__ == '__main__':
     app.run()
