@@ -18,7 +18,7 @@ fmt = 'json'  # str | Used to indicate the expected response format. Default is 
 DISPLAY_TEMPLATE = 'https://media.giphy.com/media/{ID}/giphy.gif'
 KEY = 'U7bQ6qbG1jUVeB6oQkwhtxoDVwrABzGd'
 URL = 'http://api.giphy.com/v1/gifs/search?q={TAG}&api_key=U7bQ6qbG1jUVeB6oQkwhtxoDVwrABzGd&limit=10'
-
+# http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=U7bQ6qbG1jUVeB6oQkwhtxoDVwrABzGd&limit=10
 
 def search_by_tag_return_giphy_objects(tag):
     tag = split_up(tag)
