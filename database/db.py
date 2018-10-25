@@ -2,6 +2,7 @@ import sqlite3
 
 DB_URL = 'jdbc:sqlite:C:/Users/ce691/PycharmProjects/quick_flickr\library.sqlite'
 DB_FILE = 'C:/Users/ce691/PycharmProjects/quick_flickr\library.sqlite'
+DB_FILE2 = 'quick_flickr\library.sqlite'
 
 SQL_INSERT_FLICKR = "INSERT INTO flickr VALUES ('{name}', '{owner}', '{server}', '{ispublic}', '{isfriend}', '{farm}', '{id}', '{secret}', '{title}', '{isfamily}')"
 SQL_INSERT_GIPHY = "INSERT INTO giphy VALUES ('{name}', '{typ}', '{id}', '{slug}', '{url}')"
@@ -86,5 +87,5 @@ def query_unsplah(search_term):
     conn.close()
     return all_rows
 
-rows = query_giphy('snow')
-print(rows)
+# rows = query_giphy('snow')
+# print(rows)

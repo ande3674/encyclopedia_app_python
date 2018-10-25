@@ -55,6 +55,20 @@ def build_urls(photos):
     return url_list
 
 
+def build_urls2(photos):
+    url_list = ['' for i in range(12)]
+
+    for j in range(len(photos)):
+        for i in range(len(photos[j])):
+            farm = photos[j][i].farm
+            server = photos[j][i].server
+            id = photos[j][i].id
+            secret = photos[j][i].secret
+            display_url = photoUrlTemplate.format(NUM=farm, S1=server, S2=id, S3=secret)
+            url_list[i] = display_url
+    return url_list
+
+
 def build_one_url(farm, server, id, secret):
     url = photoUrlTemplate.format(NUM=farm, S1=server, S2=id, S3=secret)
     return url

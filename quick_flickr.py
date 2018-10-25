@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from apis import flickr_api, giphy_api, unsplash_api
 from database import db
 import json, ast
+from multiprocessing import Pool
 
 app = Flask(__name__)
 db_url = 'jdbc:sqlite:C:/Users/ce691/PycharmProjects/quick_flickr\library.sqlite'
@@ -12,22 +13,23 @@ def hello_world():
 
 @app.route('/search')
 def search():
+    pool = Pool(processes=4)
     search_term = request.args.get('search')
 
     flickr_photos = flickr_api.search_by_tag_return_flickr_objects(search_term)
+    #flickr_photos = pool.map(flickr_api.search_by_tag_return_flickr_objects, search_term)
     links = flickr_api.build_urls(flickr_photos)
-    #flickr_map = [ {'photo_object':flickr_photo, 'link':link } , ... ]
     flickr_data_list = []
     for i in range(len(flickr_photos)):
         flickr_data = {'photo': {'owner':flickr_photos[i].owner,
                                  'server':flickr_photos[i].server,
                                  'ispublic':flickr_photos[i].ispublic,
-                                  'isfriend':flickr_photos[i].isfriend,
-                                  'farm':flickr_photos[i].farm,
-                                  'id':flickr_photos[i].id,
-                                  'secret':flickr_photos[i].secret,
-                                  'title':flickr_photos[i].title,
-                                  'isfamily':flickr_photos[i].isfamily},
+                                 'isfriend':flickr_photos[i].isfriend,
+                                 'farm':flickr_photos[i].farm,
+                                 'id':flickr_photos[i].id,
+                                 'secret':flickr_photos[i].secret,
+                                 'title':flickr_photos[i].title,
+                                 'isfamily':flickr_photos[i].isfamily},
                        'link':links[i],
                        'type':'flickr'}
         flickr_data_list.append(flickr_data)
@@ -65,7 +67,7 @@ def upload():
     photo_name = request.form['name']
     photo_data = request.form['data']
     photo_data = ast.literal_eval(photo_data)
-    print(photo_name)
+    #print(photo_name)
     if photo_data.get('type') == 'flickr':
         db.insert_flickr(photo_name, photo_data.get('photo').get('owner'), photo_data.get('photo').get('server'), photo_data.get('photo').get('ispublic'),
                          photo_data.get('photo').get('isfriend'), photo_data.get('photo').get('farm'), photo_data.get('photo').get('id'),
