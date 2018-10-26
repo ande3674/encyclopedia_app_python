@@ -103,7 +103,34 @@ def get_all_flickr():
         c.execute(SELECT_ALL_FLICKR)
     except sqlite3.DatabaseError:
         print('Error')
-    #TODO
+    all_rows = c.fetchall()
+    conn.commit()
+    conn.close()
+    return all_rows
 
-# rows = query_giphy('snow')
-# print(rows)
+def get_all_giphy():
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    try:
+        c.execute(SELECT_ALL_GIPHY)
+    except sqlite3.DatabaseError:
+        print('Error')
+    all_rows = c.fetchall()
+    conn.commit()
+    conn.close()
+    return all_rows
+
+def get_all_unsplash():
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    try:
+        c.execute(SELECT_ALL_UNSPLASH)
+    except sqlite3.DatabaseError:
+        print('Error')
+    all_rows = c.fetchall()
+    conn.commit()
+    conn.close()
+    return all_rows
+
+rows = get_all_flickr()
+print(rows)

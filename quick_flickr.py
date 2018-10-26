@@ -104,13 +104,11 @@ def pull():
         id = flickr_photo_data[i][6]
         secret = flickr_photo_data[i][7]
         url = flickr_api.build_one_url(farm, server, id, secret)
-        #print(url)
         all_photo_urls.append(url)
     # GIPHY PHOTOS
     for i in range (len(giphy_photo_data)):
         id = giphy_photo_data[i][2]
         url = giphy_api.build_one_url(id)
-        #print(url)
         all_photo_urls.append(url)
     # UNSPLASH PHOTOS
     for i in range(len(unsplash_photo_data)):
@@ -122,10 +120,28 @@ def pull():
 
 @app.route('/all')
 def all():
-    # TODO
-    all_flickr_photos = ''
-    all_giphy_photos = ''
-    all_unsplash_photos = ''
-    return render_template('all.html', photos=[])
+    flickr_photo_data = db.get_all_flickr()
+    giphy_photo_data = db.get_all_giphy()
+    unsplash_photo_data = db.get_all_unsplash()
+    all_photo_urls = []  # List of ALL photo urls that match the search term (from all tables)
+    # FLICKR PHOTOS
+    for i in range(len(flickr_photo_data)):
+        farm = flickr_photo_data[i][0]
+        server = flickr_photo_data[i][1]
+        id = flickr_photo_data[i][2]
+        secret = flickr_photo_data[i][3]
+        url = flickr_api.build_one_url(farm, server, id, secret)
+        all_photo_urls.append(url)
+    for i in range (len(giphy_photo_data)):
+        id = giphy_photo_data[i][0]
+        url = giphy_api.build_one_url(id)
+        all_photo_urls.append(url)
+    for i in range(len(unsplash_photo_data)):
+        url = unsplash_photo_data[i][0]
+        all_photo_urls.append(url)
+
+    return render_template('all.html', photos=all_photo_urls)
+
+
 if __name__ == '__main__':
     app.run()
