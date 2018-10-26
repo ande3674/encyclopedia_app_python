@@ -120,6 +120,12 @@ def pull():
     # send urls to the webpage to render
     return render_template('pull.html', term=search_term, links=all_photo_urls)
 
-
+@app.route('/all')
+def all():
+    # TODO
+    all_flickr_photos = ''
+    all_giphy_photos = ''
+    all_unsplash_photos = ''
+    return render_template('all.html', photos=[])
 if __name__ == '__main__':
     app.run()

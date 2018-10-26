@@ -1,0 +1,12 @@
+{%  extends "base.html" %}
+
+{% block content %}
+
+    <div class="OutlineTextBlack green-text text-accent-3">
+    <h1>All Photos In Photo Library</h1><br>
+        {% for url in photos %}
+    <img src="{{ url }}"><br>
+    </div>
+    {% endfor %}
+
+{% endblock %}

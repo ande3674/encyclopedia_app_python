@@ -17,6 +17,10 @@ CREATE_TABLE_FLICKR = "CREATE TABLE IF NOT EXISTS flickr (name TEXT, owner TEXT,
 CREATE_TABLE_GIPHY = "CREATE TABLE IF NOT EXISTS giphy (name TEXT, type TEXT, id TEXT, slug TEXT, url TEXT)"
 CREATE_TABLE_UNSPLASH = "CREATE TABLE IF NOT EXISTS unsplash (name TEXT, id TEXT, width TEXT, height TEXT, description TEXT, url TEXT)"
 
+SELECT_ALL_FLICKR = "SELECT farm, server, id, secret  FROM flickr"
+SELECT_ALL_GIPHY = "SELECT id FROM giphy"
+SELECT_ALL_UNSPLASH = "SELECT url FROM unsplash"
+
 def insert_flickr(name, owner, server, ispublic, isfriend, farm, id, secret, title, isfamily):
     sql = SQL_INSERT_FLICKR.format(name=name, owner=owner, server=server, ispublic=ispublic,
                                              isfriend=isfriend, farm=farm, id=id, secret=secret,
@@ -91,6 +95,15 @@ def query_unsplah(search_term):
     conn.commit()
     conn.close()
     return all_rows
+
+def get_all_flickr():
+    conn = sqlite3.connect(DB_FILE)
+    c = conn.cursor()
+    try:
+        c.execute(SELECT_ALL_FLICKR)
+    except sqlite3.DatabaseError:
+        print('Error')
+    #TODO
 
 # rows = query_giphy('snow')
 # print(rows)
