@@ -2,16 +2,17 @@
 
 {% block content %}
 
-    <h1>Welcome to Quick Flickr</h1>
+    <div class="OutlineTextBlack green-text text-accent-3"><h1>Welcome to Quick Flickr</h1></div>
 
     <!--Search new photos-->
-    <h2>Enter a search term:</h2>
+    <div class="OutlineTextBlack green-text text-accent-3"></div><h2>Enter a search term:</h2>
     <form action="/search" method="GET">
 
         Search: <input type="text" name="search"><br>
 
         <input type="submit" value="Go">
     </form>
+    </div>
 
 
         <!--Search saved photos-->
@@ -19,13 +20,14 @@
         <p class="flow-text OutlineTextBlack green-text text-accent-3"><b>Recently Saved Photo Search</b></p>
     </div>
 
+    <div class="OutlineTextBlack green-text text-accent-3">
     <form action="/pull" method="GET">
 
         Keyword to Search: <input type="text" name="keyword"><br>
 
         <input type="submit" value="Go">
     </form>
-
+    </div>
 
     <!--<div class="container">
     <p class="flow-text OutlineTextBlack green-text text-accent-3"><b>Search for Flickr Images</b></p>
