@@ -12,6 +12,11 @@ SQL_QUERY_FLICKR = "SELECT * FROM flickr WHERE name LIKE "
 SQL_QUERY_GIPHY = "SELECT * FROM giphy WHERE name LIKE "
 SQL_QUERY_UNSPLASH = "SELECT * FROM unsplash WHERE name LIKE "
 
+CREATE_TABLE_FLICKR = "CREATE TABLE IF NOT EXISTS flickr (name TEXT, owner TEXT, server TEXT, ispublic TEXT, " \
+                      "isfriend TEXT, farm TEXT, id TEXT, secret TEXT, title TEXT, isfamily TEXT)"
+CREATE_TABLE_GIPHY = "CREATE TABLE IF NOT EXISTS giphy (name TEXT, type TEXT, id TEXT, slug TEXT, url TEXT)"
+CREATE_TABLE_UNSPLASH = "CREATE TABLE IF NOT EXISTS unsplash (name TEXT, id TEXT, width TEXT, height TEXT, description TEXT, url TEXT)"
+
 def insert_flickr(name, owner, server, ispublic, isfriend, farm, id, secret, title, isfamily):
     sql = SQL_INSERT_FLICKR.format(name=name, owner=owner, server=server, ispublic=ispublic,
                                              isfriend=isfriend, farm=farm, id=id, secret=secret,
