@@ -2,6 +2,7 @@
 
 {% block content %}
 <a name="top"></a>
+<div class="OutlineTextBlack green-text text-accent-3">
 <h1>Flickr Results</h1><br>
     {% for data in flickr %}
         <form method="POST" action="/upload">
@@ -11,9 +12,11 @@
         <button type="submit">Save</button>
         </form>
     {% endfor %}
+</div>
 
     <a href="#top">Back To Top</a>
 
+<div class="OutlineTextBlack green-text text-accent-3">
 <h1>Giphy Results</h1><br>
 
     {% for data in giphy %}
@@ -24,9 +27,11 @@
         <button type="submit">Save</button>
         </form>
     {% endfor %}
+</div>
 
     <a href="#top">Back To Top</a>
 
+<div class="OutlineTextBlack green-text text-accent-3">
 <h1>Unsplash Results</h1><br>
     {% for data in unsplash %}
         <form method="POST" action="/upload">
@@ -36,6 +41,7 @@
         <button type="submit">Save</button>
         </form>
     {% endfor %}
+</div>
 
 <a href="#top">Back To Top</a>
 
