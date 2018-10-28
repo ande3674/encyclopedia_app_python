@@ -1,48 +1,54 @@
 {%  extends "base.html" %}
 
 {% block content %}
-<a name="top"></a>
-<div class="OutlineTextBlack green-text text-accent-3">
-<h1>Flickr Results</h1><br>
-    {% for data in flickr %}
-        <form method="POST" action="/upload">
-        <img src="{{ data.link }}">
-        <input type="hidden" name="data" value="{{ data }}"><br>
-        Name for this photo?: <input type="text" name="name">
-        <button type="submit">Save</button>
-        </form>
-    {% endfor %}
-</div>
 
-    <a href="#top">Back To Top</a>
+    <div class="container">
 
-<div class="OutlineTextBlack green-text text-accent-3">
-<h1>Giphy Results</h1><br>
+        <a name="top"></a>
 
-    {% for data in giphy %}
-        <form method="POST" action="/upload">
-        <img src="{{ data.link }}">
-        <input type="hidden" name="data" value="{{ data }}"><br>
-        Name for this photo?: <input type="text" name="name">
-        <button type="submit">Save</button>
-        </form>
-    {% endfor %}
-</div>
+        <div class="OutlineTextBlack green-text text-accent-3 row">
+        <h1>Flickr Results</h1><br>
+            {% for data in flickr %}
+                <div class="col s4">
+                    <form method="POST" action="/upload">
+                    <img src="{{ data.link }}">
+                    <input type="hidden" name="data" value="{{ data }}"><br>
+                    Name for this photo?: <input type="text" name="name">
+                    <button type="submit">Save</button>
+                    </form>
+                </div>
+            {% endfor %}
+        </div>
 
-    <a href="#top">Back To Top</a>
+            <a href="#top">Back To Top</a>
 
-<div class="OutlineTextBlack green-text text-accent-3">
-<h1>Unsplash Results</h1><br>
-    {% for data in unsplash %}
-        <form method="POST" action="/upload">
-        <img src="{{ data.link }}">
-        <input type="hidden" name="data" value="{{ data }}"><br>
-        Name for this photo?: <input type="text" name="name">
-        <button type="submit">Save</button>
-        </form>
-    {% endfor %}
-</div>
+        <div class="OutlineTextBlack green-text text-accent-3 row">
+        <h1>Giphy Results</h1><br>
+            {% for data in giphy %}
+                <form method="POST" action="/upload">
+                <img src="{{ data.link }}">
+                <input type="hidden" name="data" value="{{ data }}"><br>
+                Name for this photo?: <input type="text" name="name">
+                <button type="submit">Save</button>
+                </form>
+            {% endfor %}
+        </div>
 
-<a href="#top">Back To Top</a>
+            <a href="#top">Back To Top</a>
+
+        <div class="OutlineTextBlack green-text text-accent-3">
+        <h1>Unsplash Results</h1><br>
+            {% for data in unsplash %}
+                <form method="POST" action="/upload">
+                <img src="{{ data.link }}">
+                <input type="hidden" name="data" value="{{ data }}"><br>
+                Name for this photo?: <input type="text" name="name">
+                <button type="submit">Save</button>
+                </form>
+            {% endfor %}
+        </div>
+
+        <a href="#top">Back To Top</a>
+    </div>
 
 {% endblock %}

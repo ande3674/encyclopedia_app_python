@@ -12,55 +12,18 @@
 
     <!--Import materialize.css-->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css" rel="stylesheet" />
+
+    <!-- CSS and JS files-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
+
 <!--Background color-->
-<body style="background-color:#DCDCDC;">
-
-<!--CSS code-->
-<style type="text/css">
-    .OutlineTextBlack {
-        text-shadow:
-            /* Outline */
-                -1px -1px 0 #000000,
-                1px -1px 0 #000000,
-                -1px 1px 0 #000000,
-                1px 1px 0 #000000,
-                -2px 0 0 #000000,
-                2px 0 0 #000000,
-                0 2px 0 #000000,
-                0 -2px 0 #000000; /* Terminate with a semi-colon */
-    }
-
-
-</style>
-<!--JQuery scripts-->
-<script>
-
-    /* Code to animate logo on mouse hover */
-    $(function () {
-        $(".playgif").hover(function () {
-            var stat = $(this).find("img").attr("src");
-            $(this).find("img").attr("src", $(this).find("img").data("swap"));
-            $(this).find("img").data("swap", stat);
-        })
-    });
-
-
-    /*Code to expand images on click*/
-    $(document).ready(function(){
-        $('.materialboxed').materialbox({
-            inDuration:275,
-            outDuration:200,
-            onOpenStart: function() {console.log("onOpenStart");},
-            onOpenEnd: function() {console.log("onOpenEnd");},
-            onCloseStart: function() {console.log("onCloseStart");},
-            onCloseEnd: function() {console.log("onCloseEnd");}
-        });
-    });
-</script>
+<body style="background-color: #d6d4d4;">
 
 <!--Navigation bar-->
 <nav class="nav-extended animate playgif pink darken-4">
+
     <div class="nav-wrapper">
         <div class="brand-logo center">
 
@@ -73,13 +36,14 @@
             <li><a href="/all" class="OutlineTextBlack green-text text-accent-3"><b>All Saved Photos</b></a></li>
         </ul>
     </div>
+
     <div class="nav-content animate playgif">
         <span class="nav-title"></span>
     </div>
+
 </nav>
 
 {% block content %}
-
 {% endblock %}
 
 </body>
