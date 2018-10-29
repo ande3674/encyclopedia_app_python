@@ -10,3 +10,7 @@
             0 2px 0 #000000,
             0 -2px 0 #000000; /* Terminate with a semi-colon */
 }
+
+.card-image {
+    padding-top: 16px;
+}
