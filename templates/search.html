@@ -1,48 +1,83 @@
 {%  extends "base.html" %}
 
 {% block content %}
-<a name="top"></a>
-<div class="OutlineTextBlack green-text text-accent-3">
-<h1>Flickr Results</h1><br>
-    {% for data in flickr %}
-        <form method="POST" action="/upload">
-        <img src="{{ data.link }}">
-        <input type="hidden" name="data" value="{{ data }}"><br>
-        Name for this photo?: <input type="text" name="name">
-        <button type="submit">Save</button>
-        </form>
-    {% endfor %}
-</div>
 
-    <a href="#top">Back To Top</a>
+    <div class="container center">
 
-<div class="OutlineTextBlack green-text text-accent-3">
-<h1>Giphy Results</h1><br>
+        <a name="top"></a>
 
-    {% for data in giphy %}
-        <form method="POST" action="/upload">
-        <img src="{{ data.link }}">
-        <input type="hidden" name="data" value="{{ data }}"><br>
-        Name for this photo?: <input type="text" name="name">
-        <button type="submit">Save</button>
-        </form>
-    {% endfor %}
-</div>
+        <div class="OutlineTextBlack green-text text-accent-3">
+        <h1>Flickr Results</h1><br>
+            {% for data in flickr %}
+                <div class="row">
+                    <div class="card grey lighten-3 col s12 m8 offset-m2">
+                        <form class="container" id="search-results" method="POST" action="/upload">
+                            <div class="row">
+                                <div class="card-image">
+                                    <img class="materialboxed responsive-img z-depth-2" src="{{ data.link }}">
+                                </div>
+                                <div class="card-action">
+                                    <input type="hidden" name="data" value="{{ data }}"><br>
+                                    Enter a name and save this photo: <input type="text" name="name">
+                                    <button type="submit">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
 
-    <a href="#top">Back To Top</a>
+        <a href="#top"><h5>Back To Top</h5></a>
 
-<div class="OutlineTextBlack green-text text-accent-3">
-<h1>Unsplash Results</h1><br>
-    {% for data in unsplash %}
-        <form method="POST" action="/upload">
-        <img src="{{ data.link }}">
-        <input type="hidden" name="data" value="{{ data }}"><br>
-        Name for this photo?: <input type="text" name="name">
-        <button type="submit">Save</button>
-        </form>
-    {% endfor %}
-</div>
+        <div class="OutlineTextBlack green-text text-accent-3">
+        <h1>Giphy Results</h1><br>
+            {% for data in giphy %}
+                <div class="row">
+                    <div class="card grey lighten-3 col s12 m8 offset-m2">
+                        <form class="container" id="search-results" method="POST" action="/upload">
+                            <div class="row">
+                                <div class="card-image">
+                                    <img class="materialboxed responsive-img z-depth-2" src="{{ data.link }}">
+                                </div>
+                                <div class="card-action">
+                                    <input type="hidden" name="data" value="{{ data }}"><br>
+                                    Enter a name and save this photo: <input type="text" name="name">
+                                    <button type="submit">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
 
-<a href="#top">Back To Top</a>
+            <a href="#top">Back To Top</a>
+
+        <div class="OutlineTextBlack green-text text-accent-3">
+        <h1>Unsplash Results</h1><br>
+            {% for data in unsplash %}
+                <div class="row">
+                    <div class="card grey lighten-3 col s12 m8 offset-m2">
+                        <form class="container" id="search-results" method="POST" action="/upload">
+                            <div class="row">
+                                <div class="card-image">
+                                    <img class="materialboxed responsive-img z-depth-2" src="{{ data.link }}">
+                                </div>
+                                <div class="card-action">
+                                    <input type="hidden" name="data" value="{{ data }}"><br>
+                                    Enter a name and save this photo: <input type="text" name="name">
+                                    <button type="submit">Save</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+
+        <a href="#top">Back To Top</a>
+    </div>
 
 {% endblock %}

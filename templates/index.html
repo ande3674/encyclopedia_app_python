@@ -2,34 +2,36 @@
 
 {% block content %}
 
-    <div class="OutlineTextBlack green-text text-accent-3"><h1>Welcome to Quick Flickr</h1></div>
-
-    <!--Search new photos-->
     <div class="container">
+        <div class="OutlineTextBlack green-text text-accent-3"><h1>Welcome to Quick Flickr</h1></div>
+
+        <!--Search new photos-->
         <p class="flow-text OutlineTextBlack green-text text-accent-3"><b>New Photo Search</b></p>
-    </div>
-    <div class="OutlineTextBlack green-text text-accent-3">
-    <form action="/search" method="GET">
 
-        Keyword to Search: <input type="text" name="search"><br>
+        <div class="row">
+            <div class="OutlineTextBlack green-text text-accent-3">
+                <form action="/search" method="GET">
 
-        <input type="submit" value="Go">
-    </form>
-    </div>
+                    Keyword to Search:
+                    <input type="text" name="search"><br>
+                    <input type="submit" value="Search">
+                </form>
+            </div>
+        </div>
 
+            <!--Search saved photos-->
+        <div>
+            <p class="flow-text OutlineTextBlack green-text text-accent-3"><b>Recently Saved Photo Search</b></p>
+        </div>
 
-        <!--Search saved photos-->
-    <div class="container">
-        <p class="flow-text OutlineTextBlack green-text text-accent-3"><b>Recently Saved Photo Search</b></p>
-    </div>
+        <div class="OutlineTextBlack green-text text-accent-3">
+        <form action="/pull" method="GET">
 
-    <div class="OutlineTextBlack green-text text-accent-3">
-    <form action="/pull" method="GET">
+            Keyword to Search: <input type="text" name="keyword"><br>
 
-        Keyword to Search: <input type="text" name="keyword"><br>
-
-        <input type="submit" value="Go">
-    </form>
+            <input type="submit" value="Search">
+        </form>
+        </div>
     </div>
 
     <!--<div class="container">

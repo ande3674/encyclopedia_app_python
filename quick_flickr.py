@@ -7,6 +7,8 @@ from multiprocessing import Pool
 app = Flask(__name__)
 db_url = 'jdbc:sqlite:C:/Users/ce691/PycharmProjects/quick_flickr\library.sqlite'
 
+db.createTables()
+
 @app.route('/')
 def hello_world():
     return render_template('index.html')
