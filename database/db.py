@@ -1,8 +1,6 @@
 import sqlite3
 
 DB_URL = 'jdbc:sqlite:C:/Users/ce691/PycharmProjects/quick_flickr\library.sqlite'
-#DB_FILE = 'C:/Users/ce691/PycharmProjects/quick_flickr\library.sqlite'
-#DB_FILE2 = 'quick_flickr\library.sqlite'
 DB_FILE = 'library.sqlite'
 
 SQL_INSERT_FLICKR = "INSERT OR IGNORE INTO flickr VALUES ('{name}', '{owner}', '{server}', '{ispublic}', '{isfriend}', '{farm}', '{id}', '{secret}', '{title}', '{isfamily}')"
