@@ -15,7 +15,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css" rel="stylesheet" />
 
     <!-- CSS and JS files-->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
 
 </head>
@@ -34,8 +34,8 @@
 
         </div>
         <ul class="left hide-on-med-and-down">
-            <li><a href="/" class="OutlineTextBlack green-text text-accent-3"><b>Home Search</b></a></li>
-            <li><a href="/all" class="OutlineTextBlack green-text text-accent-3"><b>All Saved Photos</b></a></li>
+            <li><a href="/" class="OutlineTextBlack green-text text-accent-3"><strong>Home Search</strong></a></li>
+            <li><a href="/all" class="OutlineTextBlack green-text text-accent-3"><strong>All Saved Photos</strong></a></li>
         </ul>
     </div>
 

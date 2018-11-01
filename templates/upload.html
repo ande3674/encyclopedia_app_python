@@ -2,10 +2,14 @@
 
 {% block content %}
 
-    <div class="OutlineTextBlack green-text text-accent-3">
-    <h1>Saved This Photo!</h1><br>
-    <img src="{{ url }}"><br>
-    <h2>Click browser back button to return to search results</h2>
+    <div class="container">
+        <div class="row">
+            <div class="OutlineTextBlack green-text text-accent-3">
+                <h1>Successfully Saved This Photo!</h1><br>
+                <img src="{{ url }}"><br>
+                <input type="button" value="Back" onclick="window.history.back()" />
+            </div>
+        </div>
     </div>
 
 {% endblock %}
