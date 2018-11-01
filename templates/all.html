@@ -2,12 +2,13 @@
 
 {% block content %}
 
+        <br>
         <!-- display all photos in the users library-->
         <h1 class="OutlineTextBlack green-text text-accent-3 center">All Photos In Photo Library</h1><br>
         {% for url in photos %}
             <div class="container">
                 <div>
-                    <div class="gallery">
+                    <div class="gallery z-depth-1">
                         <img class="responsive-img materialboxed" src="{{ url }}">
                     </div>
                 </div>

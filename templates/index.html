@@ -3,34 +3,35 @@
 {% block content %}
 
     <div class="container">
+    <br>
         <div class="OutlineTextBlack green-text text-accent-3"><h1>Welcome to Quick Flickr</h1></div>
 
         <!--Search new photos-->
-        <p class="flow-text OutlineTextBlack green-text text-accent-3"><b>New Photo Search</b></p>
+        <p class="flow-text OutlineTextBlack green-text text-accent-3"><strong>New Photo Search</strong></p>
 
         <div class="row">
             <div class="OutlineTextBlack green-text text-accent-3">
+                <h6>Keyword to Search:</h6>
                 <form action="/search" method="GET">
-
-                    Keyword to Search:
                     <input type="text" name="search"><br>
                     <input type="submit" value="Search">
                 </form>
             </div>
         </div>
+        <br>
 
             <!--Search saved photos-->
         <div>
-            <p class="flow-text OutlineTextBlack green-text text-accent-3"><b>Recently Saved Photo Search</b></p>
+            <p class="flow-text OutlineTextBlack green-text text-accent-3"><strong>Recently Saved Photo Search</strong></p>
         </div>
 
         <div class="OutlineTextBlack green-text text-accent-3">
-        <form action="/pull" method="GET">
-
-            Keyword to Search: <input type="text" name="keyword"><br>
-
-            <input type="submit" value="Search">
-        </form>
+            <h6>Keyword to Search:</h6>
+            <form action="/pull" method="GET">
+                <input type="text" name="keyword" id="keyword"><br>
+                <div id="results"></div>
+                <input type="submit" value="Search">
+            </form>
         </div>
     </div>
 
