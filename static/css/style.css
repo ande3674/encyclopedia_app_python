@@ -1,0 +1,37 @@
+.OutlineTextBlack {
+    text-shadow:
+        /* Outline */
+        -1px -1px 0 #000000,
+        1px -1px 0 #000000,
+        -1px 1px 0 #000000,
+        1px 1px 0 #000000,
+        -2px 0 0 #000000,
+        2px 0 0 #000000,
+        0 2px 0 #000000,
+        0 -2px 0 #000000; /* Terminate with a semi-colon */
+}
+
+.card-image {
+    padding-top: 8px;
+}
+
+div.gallery {
+    margin: 5px;
+    border: 1px solid #000000;
+    float: left;
+    width: 325px;
+}
+
+div.gallery:hover {
+    border: 1px solid #777;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 5px;
+    text-align: center;
+}

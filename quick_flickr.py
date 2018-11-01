@@ -7,6 +7,8 @@ from multiprocessing import Pool
 app = Flask(__name__)
 db_url = 'jdbc:sqlite:C:/Users/ce691/PycharmProjects/quick_flickr\library.sqlite'
 
+db.createTables()
+
 @app.route('/')
 def hello_world():
     return render_template('index.html')
@@ -17,7 +19,6 @@ def search():
     search_term = request.args.get('search')
 
     flickr_photos = flickr_api.search_by_tag_return_flickr_objects(search_term)
-    #flickr_photos = pool.map(flickr_api.search_by_tag_return_flickr_objects, search_term)
     links = flickr_api.build_urls(flickr_photos)
     flickr_data_list = []
     for i in range(len(flickr_photos)):
@@ -59,7 +60,6 @@ def search():
                          'type':'unsplash'}
         unsplash_data_list.append(unsplash_data)
 
-    #return (render_template('search.html', links1=links, links2=giphy_links, links3=unsplash_links))
     return (render_template('search.html', flickr=flickr_data_list, giphy=giphy_data_list, unsplash=unsplash_data_list))
 
 @app.route('/upload', methods=['POST'])
@@ -67,7 +67,6 @@ def upload():
     photo_name = request.form['name']
     photo_data = request.form['data']
     photo_data = ast.literal_eval(photo_data)
-    #print(photo_name)
     if photo_data.get('type') == 'flickr':
         db.insert_flickr(photo_name, photo_data.get('photo').get('owner'), photo_data.get('photo').get('server'), photo_data.get('photo').get('ispublic'),
                          photo_data.get('photo').get('isfriend'), photo_data.get('photo').get('farm'), photo_data.get('photo').get('id'),
@@ -90,10 +89,6 @@ def pull():
     flickr_photo_data = db.query_flickr(search_term)
     giphy_photo_data = db.query_giphy(search_term)
     unsplash_photo_data = db.query_unsplah(search_term)
-    # Test data - delete later
-    #print(flickr_photo_data)
-    #print(giphy_photo_data)
-    #print(unsplash_photo_data)
     #now we have to deal with all of the data
     # build/get url links
     all_photo_urls = [] # List of ALL photo urls that match the search term (from all tables)
@@ -140,7 +135,7 @@ def all():
         url = unsplash_photo_data[i][0]
         all_photo_urls.append(url)
 
-    return render_template('all.html', photos=all_photo_urls)
+    return render_template('all.html',photos=all_photo_urls)
 
 
 if __name__ == '__main__':
